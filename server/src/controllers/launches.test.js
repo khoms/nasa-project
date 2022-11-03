@@ -11,7 +11,7 @@ describe("Test launches Api", () => {
     await disconnectDB();
   });
 
-  describe("Test GEt /launches", () => {
+  describe("Test GEt /v1/launches", () => {
     test("It should respond with 200 success", async () => {
       const response = await request(app).get("/launches").expect(200);
       // expect(response.statusCode).toBe(200);
@@ -33,7 +33,7 @@ describe("Test launches Api", () => {
 
     test("It should respond with 201 created", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post("/v1/launches")
         .send(completeLaunchData)
         .expect("Content-Type", /json/)
         .expect(201);

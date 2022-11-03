@@ -1,6 +1,7 @@
 const http = require("http");
 
 const { loadPlanetsData } = require("./models/planets.model");
+const { loadLaunchesData } = require("./models/launches.model");
 
 const app = require("./app");
 const { connectDB } = require("./db");
@@ -13,6 +14,7 @@ const runServer = async () => {
   connectDB();
 
   await loadPlanetsData();
+  await loadLaunchesData();
 
   server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
