@@ -30,6 +30,7 @@ const httpAbortLaunch = async (req, res) => {
   }
 
   const aborted = await abortLaunchWithId(launchId);
+  // console.log(aborted);
 
   if (!aborted) {
     return res.status(400).json({

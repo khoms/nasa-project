@@ -92,8 +92,19 @@ const abortLaunchWithId = async (launchId) => {
       success: false,
     }
   );
-
-  return aborted.ok === 1 && aborted.nModified === 1;
+  // console.log(aborted);
+  return aborted.matchedCount === 1 && aborted.modifiedCount === 1;
+  // return await launchesDatabase.updateOne(
+  //   {
+  //     flightNumber: launchId,
+  //   },
+  //   {
+  //     $set: {
+  //       upcoming: false,
+  //       success: false,
+  //     },
+  //   }
+  // );
 };
 
 module.exports = {

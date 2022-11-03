@@ -27,11 +27,12 @@ const launchesSchema = new mongoose.Schema({
   upcoming: {
     type: Boolean,
     required: true,
+    default: true,
   },
   success: {
     type: Boolean,
     required: true,
-    default: false,
+    default: true,
   },
 });
 
