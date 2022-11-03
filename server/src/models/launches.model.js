@@ -55,16 +55,6 @@ const populateLaunches = async () => {
       return payload["customers"];
     });
 
-    const launch = {
-      flightNumber: launchDoc["flight_number"],
-      mission: launchDoc["name"],
-      rocket: launchDoc["rocket"]["name"],
-      launchDate: launchDoc["date_local"],
-      upcoming: launchDoc["upcoming"],
-      success: launchDoc["success"],
-      customers,
-    };
-
     console.log(`${launch.flightNumber} ${launch.mission}`);
 
     saveLaunch(launch);
@@ -107,6 +97,7 @@ const getLatestFlightNumber = async () => {
 const getAllLaunches = async (skip, limit) => {
   return await launchesDatabase
     .find({}, { __id: 0, __v: 0 })
+    .sort({ flightNumber: 1 })
     .skip(skip)
     .limit(limit);
 };
@@ -122,8 +113,6 @@ const saveLaunch = async (launch) => {
     }
   );
 };
-
-saveLaunch(launch);
 
 const scheduleLaunch = async (launch) => {
   const planet = await planets.findOne({
