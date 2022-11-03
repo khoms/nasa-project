@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 connectDB();
 const runServer = async () => {
+  connectDB();
+
   await loadPlanetsData();
 
   server.listen(PORT, () => {
