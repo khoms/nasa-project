@@ -3,12 +3,12 @@ const http = require("http");
 const { loadPlanetsData } = require("./models/planets.model");
 
 const app = require("./app");
-const connectDB = require("./db");
+const { connectDB } = require("./db");
 
 const PORT = process.env.PORT || 8000;
 
 const server = http.createServer(app);
-connectDB();
+// connectDB();
 const runServer = async () => {
   connectDB();
 
