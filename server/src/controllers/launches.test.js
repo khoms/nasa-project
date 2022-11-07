@@ -1,10 +1,12 @@
 const request = require("supertest");
 const app = require("../app");
 const { connectDB, disconnectDB } = require("../db");
+const { loadLaunchesData } = require("../models/launches.model");
 
 describe("Test launches Api", () => {
   beforeAll(async () => {
     await connectDB();
+    await loadLaunchesData();
   });
 
   afterAll(async () => {
